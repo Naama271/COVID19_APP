@@ -1,0 +1,70 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: cornsilk;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.countryBTN{
+    float: left;
+    margin: 5PX;
+    border: 0.1px RED SOLID;
+    border-radius: 2px;
+    padding: 10px;
+    
+}
+
+.countryBTN:hover{
+
+    border-radius: 3px;
+    background-color: blue;
+    color: cornsilk;
+    
+}
+
+.region_btn{
+   font-size: 15px; 
+   font-weight: bolder;
+   background-color: rgb(112, 165, 255);
+   padding: 20px;
+ display: block;
+ margin-left: 5px;
+
+}
+
+.region_btn:hover{
+
+    background-color: rgb(0, 94, 255);
+
+ 
+ }
+
+.regionsBtn{
+display: flex;
+align-content: space-between;
+flex-direction: row;
+}
+
+.display{
+width: 100vw;
+
+}
+img{
+    width: 30px;
+
+}
+
+.display div{
+ 
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+
