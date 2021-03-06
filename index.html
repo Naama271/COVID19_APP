@@ -11,6 +11,7 @@
   </head>
   <body>
     <div class="btns_div">
+      <h1 >choose continent</h1>
       <div class="regionsBtn">
        <input type="button" value="Asia" class="region_btn">
        <input type="button" value="Africa" class="region_btn">
@@ -19,16 +20,27 @@
        <input type="button" value="world" class="region_btn">
       </div>
       <div class="casessBtns">
-        <input type="button" value="Confirmed" class="case_btn">
-        <input type="button" value="Recovered" class="case_btn">
-        <input type="button" value="Critical" class="case_btn">
-        <input type="button" value="Deaths" class="case_btn">
+        <input type="button" value="Confirmed" class="case_btn Confirmed">
+        <input type="button" value="Recovered" class="case_btn Recovered">
+        <input type="button" value="Critical" class="case_btn Critical">
+        <input type="button" value="Deaths" class="case_btn Deaths">
        </div>
 
     </div>
     <canvas id="myChart"></canvas>
-    <div class="countryStatus hidden">countryStatus</div>
 
+   <div class="contryStatusBox hidden">
+    <h1 class="contryHEADER">Choose country</h1>
+    <div class="countryStatus ">
+      
+      <div class="totalCases">total Cases<div class="amountOf"></div></div>
+      <div class="newCases">new Cases<div class="amountOf"></div></div>
+      <div class="totalDeaths"> total Deaths<div class="amountOf"></div></div>
+      <div class="newDeaths">new Deaths<div class="amountOf"></div></div>
+      <div class="totalRecovered"> total Recovered<div class="amountOf"></div></div>
+      <div class="criticalCondition">critical Condition<div class="amountOf"></div></div>
+    </div>
+  </div>
 
     <div class="display"></div>
 

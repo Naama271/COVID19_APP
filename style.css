@@ -2,6 +2,7 @@
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body{
@@ -17,8 +18,18 @@ body{
     border: 0.1px RED SOLID;
     border-radius: 2px;
     padding: 10px;
+    width: 100px;
+    height: 150px;
+    text-align: center;
+    background-color: rgb(152, 190, 255);;
+
+}
+.countryBTN a{
+    text-decoration: none;
+    color: #CC0000;
     
 }
+
 
 .countryBTN:hover{
 
@@ -28,24 +39,24 @@ body{
     
 }
 
-.region_btn{
+.region_btn , .case_btn{
    font-size: 15px; 
    font-weight: bolder;
    background-color: rgb(112, 165, 255);
-   padding: 20px;
+   padding: 10px;
  display: block;
  margin-left: 5px;
 
 }
 
-.region_btn:hover{
+.region_btn:hover , .case_btn:hover{
 
     background-color: rgb(0, 94, 255);
 
  
  }
 
-.regionsBtn{
+.regionsBtn , .casessBtns{
 display: flex;
 align-content: space-between;
 flex-direction: row;
@@ -56,15 +67,68 @@ width: 100vw;
 
 }
 img{
-    width: 30px;
-
+    width: 50px;
+   
 }
 
 .display div{
- 
-    height: 50px;
     display: flex;
-    align-items: center;
+    align-items: top;
+    justify-content: center;
 }
 
 
+.countryStatus{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    background-color: #CC0000;
+    color: white;
+   
+}
+
+.countryStatus > div{
+    border: blue 1px solid;
+    margin-right: 5px;
+    display: flex;
+    flex-direction: column ;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+h1{
+ color: #CC0000;
+display: block;
+}
+
+.contryStatusBox{
+    text-align: center;
+    background-color: rgb(112, 165, 255);
+    padding: 15px 0px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+.amountOf{
+    font-weight: 800;
+
+}
+
+.Confirmed{
+    background-color: #454993;
+}
+
+.Recovered{
+    background-color: #61BC57;
+}
+
+.Critical{
+    background-color: #FF5C5C;
+}
+
+.Deaths{
+    background-color: #443F3F;
+}

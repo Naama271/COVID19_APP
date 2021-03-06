@@ -13,7 +13,7 @@ const getData = async () => {
   //console.log(reqUser2.body);
 
   const userData2 = await reqUser2.json();
-  console.log(userData2);
+  // console.log(userData2);
   displayData(userData2, userData);
 };
 
@@ -26,9 +26,12 @@ const displayData = (userData2, userData) => {
   let bths = document.querySelectorAll(".region_btn");
   bths.forEach((element) =>
     element.addEventListener("click", function () {
-      // for (let i = 0; i < userData.length; i++){
-      //     userData[i]
-      printChart(userData2, userData);
+
+
+      let displayDiv = document.querySelector(".display");
+
+      while (displayDiv.firstChild)
+        displayDiv.removeChild(displayDiv.firstChild);
 
       for (let i = 0; i < userData2.length; i++) {
         if (userData2[i].region.toLowerCase() == element.value.toLowerCase()) {
@@ -43,25 +46,85 @@ const displayData = (userData2, userData) => {
             code: userData2[i].alpha2Code,
           });
 
+          // console.log(countriesInContinent);
+
           countriesList.push(userData2[i].name);
 
-          div.addEventListener("click", function () {
-            console.log(userData2[i].name);
+          div.addEventListener("click", async () => {
+            for (let i = 0; i < countriesInContinent.length; i++) {
+              if (
+                div.innerHTML
+                  .toLowerCase()
+                  .includes(countriesInContinent[i].name.toLowerCase())
+              ) {
+                console.log(countriesInContinent[i].code);
+                let contryCode = countriesInContinent[i].code;
+
+                let url3 = `https://corona-api.com/countries/${contryCode}`;
+
+                const reqUser3 = await fetch(url3);
+                console.log(reqUser3);
+
+                const userData3 = await reqUser3.json();
+                console.log(userData3.data);
+
+                let totalCases = userData3.data.latest_data.confirmed;
+                let newCases = userData3.data.today.confirmed;
+                let totalDeaths = userData3.data.latest_data.deaths;
+                let newDeaths = userData3.data.today.deaths;
+                let totalRecovered = userData3.data.latest_data.recovered;
+                let criticalCondition = userData3.data.latest_data.critical;
+
+                //let countryStatus = document.querySelector(".countryStatus");
+
+                let contryHEADER = document.querySelector(".contryHEADER");
+                contryHEADER.innerHTML = countriesInContinent[i].name;
+
+                let totalCasesDiv = document.querySelector(
+                  ".totalCases .amountOf"
+                );
+                totalCasesDiv.innerHTML = totalCases;
+
+                let newCasesDiv = document.querySelector(".newCases .amountOf");
+                newCasesDiv.innerHTML = newCases;
+
+                let totalDeathsDiv = document.querySelector(".totalDeaths .amountOf");
+                totalDeathsDiv.innerHTML = totalDeaths;
+
+                let newDeathsDiv = document.querySelector(
+                  ".newDeaths .amountOf"
+                );
+                newDeathsDiv.innerHTML = newDeaths;
+
+                let totalRecoveredDiv = document.querySelector(
+                  ".totalRecovered .amountOf"
+                );
+                totalRecoveredDiv.innerHTML = totalRecovered;
+
+                let criticalConditionDiv = document.querySelector(
+                  ".criticalCondition .amountOf"
+                );
+                criticalConditionDiv.innerHTML = criticalCondition;
+                // countryStatus.innerHTML = `totalCases:${totalCases}  newCases:${newCases}  totalDeaths:${totalDeaths}  newDeaths:${newDeaths} totalRecovered:${totalRecovered} criticalCondition:${criticalCondition}`
+              }
+            }
+
+            //  displayData(userData2, userData);
           });
 
-          let displayDiv = document.querySelector(".display");
           displayDiv.appendChild(div);
         }
       }
+      printChart(userData2, userData);
     })
   );
 };
 
 function printChart(userData2, userData) {
   let amounts = [];
+  amounts.splice(0, amounts.length);
+  console.log(amounts);
 
-  // console.log(countriesInContinent.code);
-  // console.log(userData.data[0].latest_data.deaths);
   let bths = document.querySelectorAll(".case_btn");
 
   bths.forEach((element) =>
@@ -110,10 +173,6 @@ function printChart(userData2, userData) {
       }
 
       console.log(amounts);
-      // Confirmed Cases
-      // - Number of Deaths
-      // - Number of recovered
-      // - Number of critical condition
 
       let ctx = document.getElementById("myChart").getContext("2d");
       let chart = new Chart(ctx, {
@@ -134,7 +193,7 @@ function printChart(userData2, userData) {
         },
 
         // Configuration options go here
-        options: {},
+       // options: {},
       });
     })
   );
