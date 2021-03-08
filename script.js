@@ -52,16 +52,14 @@ const displayData = (userData2, userData) => {
                   .toLowerCase()
                   .includes(countriesInContinent[i].name.toLowerCase())
               ) {
-                // console.log(countriesInContinent[i].code);
+
                 let contryCode = countriesInContinent[i].code;
 
                 let url3 = `https://corona-api.com/countries/${contryCode}`;
 
                 const reqUser3 = await fetch(url3);
-                //console.log(reqUser3);
 
                 const userData3 = await reqUser3.json();
-                // console.log(userData3.data);
 
                 let totalCases = userData3.data.latest_data.confirmed;
                 let newCases = userData3.data.today.confirmed;
@@ -117,10 +115,8 @@ function printChart(userData) {
 
   bths.forEach((element) =>
     element.addEventListener("click", function () {
-      //  console.log(element);
 
       let caseValue = element.value.toLowerCase();
-      // console.log(caseValue);
 
       let color;
       let label;
@@ -137,7 +133,7 @@ function printChart(userData) {
 
             checkCase("deaths", "#443F3F", deathsData);
             checkCase("critical", "#FF5C5C", criticalData);
-            checkCase("confirmed", "#454993", deathsData);
+            checkCase("confirmed", "#454993", confirmedData);
             checkCase("recovered", "#61BC57", recoveredData);
 
             function checkCase(caseName, colorHex, data) {
